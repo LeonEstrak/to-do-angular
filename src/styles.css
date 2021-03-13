@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  /* min-height: 100vh; */
+  background-image: linear-gradient(to right top, #6571df, #6571dfab);
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}

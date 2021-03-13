@@ -1,0 +1,6 @@
+<app-cards *ngFor="let todo of todoArray" 
+[todo]="todo"
+(onToggle)="changeCompleted($event)"
+>
+
+</app-cards>

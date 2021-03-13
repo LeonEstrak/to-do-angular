@@ -1,0 +1,26 @@
+nav {
+  margin: 0;
+  background-image: linear-gradient(
+    to right,
+    rgba(11, 71, 148, 0.835),
+    rgba(11, 71, 148, 0.635)
+  );
+  height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom-right-radius: 10rem;
+  border-bottom-left-radius: 10rem;
+}
+
+h1 {
+  color: aliceblue;
+  font-size: xx-large;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+}

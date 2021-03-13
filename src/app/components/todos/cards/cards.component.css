@@ -1,0 +1,25 @@
+h3 {
+  font-size: x-large;
+}
+
+.card {
+  background-color: aliceblue;
+  margin: 1rem 2rem;
+  padding: 2rem;
+  border-radius: 2rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.content {
+  flex: 20;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+input[type="checkbox"] {
+  min-width: 2rem;
+  min-height: 2rem;
+  cursor: pointer;
+}
