@@ -1,4 +1,7 @@
 <div class="card">
+    <button mat-button *ngIf="todo.completed" class="deleteButton" (click)="onDelete()">    
+        <mat-icon style="height: 35px;">delete</mat-icon>
+    </button>
     <div class="content">
         <h3>{{todo.message}}</h3>
     </div>

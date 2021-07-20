@@ -23,3 +23,7 @@ input[type="checkbox"] {
   min-height: 2rem;
   cursor: pointer;
 }
+
+.deleteButton{
+  position: absolute;
+}

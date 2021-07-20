@@ -13,16 +13,8 @@ export class TodosComponent implements OnInit {
   constructor(private toDoDataService: TodoDataService) {}
 
   ngOnInit(): void {
-    this.todoArray = this.toDoDataService.getTodoList;
-  }
-
-  changeCompleted(id: string): void {
-    console.log('changeCompleted Fired');
-    this.todoArray.forEach((todo: Todo) => {
-      if (todo.id == id) {
-        todo.completed = !todo.completed;
-        console.log(todo);
-      }
+    this.toDoDataService.getTodoList().subscribe((resp:Todo[])=>{
+      this.todoArray = resp;
     });
   }
 }
