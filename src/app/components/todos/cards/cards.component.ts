@@ -10,11 +10,16 @@ import { Todo } from '../../../models/todo.model';
 export class CardsComponent implements OnInit {
   constructor(private todoDataService:TodoDataService) {}
 
-  ngOnInit(): void {}
   @Input() todo: Todo;
+  className:string;
+  ngOnInit(): void {
+    this.className=this.todo.completed?"completed":"card";
+  }
 
   onChange() {
     this.todoDataService.updateTodo(this.todo);
+
+    this.className=this.todo.completed?"completed":"card";
   }
 
   onDelete() {

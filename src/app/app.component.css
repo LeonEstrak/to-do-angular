@@ -1,16 +1,16 @@
 nav {
   margin: 0;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     to right,
     rgba(11, 71, 148, 0.835),
     rgba(11, 71, 148, 0.635)
-  );
+  ); */
+  background-color: #4b5157;
   height: 10vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom-right-radius: 10rem;
-  border-bottom-left-radius: 10rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 h1 {
