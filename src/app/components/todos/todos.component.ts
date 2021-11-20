@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TodoDataService } from 'src/app/services/todo-data.service';
-import { Todo } from '../../models/todo.model';
+import { Student } from '../../models/student.model';
 
 @Component({
   selector: 'app-todos',
@@ -8,13 +8,13 @@ import { Todo } from '../../models/todo.model';
   styleUrls: ['./todos.component.css'],
 })
 export class TodosComponent implements OnInit {
-  todoArray: Todo[];
+  studentArray: Student[];
 
   constructor(private toDoDataService: TodoDataService) {}
 
   ngOnInit(): void {
-    this.toDoDataService.getTodoList().subscribe((resp:Todo[])=>{
-      this.todoArray = resp;
+    this.toDoDataService.getTodoList().subscribe((resp: Student[]) => {
+      this.studentArray = resp;
     });
   }
 }

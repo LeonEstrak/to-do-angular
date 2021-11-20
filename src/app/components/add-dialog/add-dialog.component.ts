@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { Todo } from 'src/app/models/todo.model';
+import { MatDialogRef } from '@angular/material/dialog';
+import { Student } from 'src/app/models/student.model';
 import { TodoDataService } from 'src/app/services/todo-data.service';
 @Component({
   selector: 'add-dialog',
@@ -13,17 +13,29 @@ export class AddDialogComponent {
     private todoService: TodoDataService
   ) {}
 
-  message: string = '';
-  updateMessage(event: any) {
-    this.message = event.target.value;
-  }
-  onConfirm() {
-    let newTodo = new Todo();
-    newTodo.id = Date.now().toString();
-    newTodo.completed = false;
-    newTodo.message = this.message;
+  rollno: string = '';
+  name: string = '';
+  age: number = 18;
 
-    this.todoService.addTodo(newTodo);
-    console.log(newTodo);
+  updaterollno(event: any) {
+    this.rollno = event.target.value;
+  }
+
+  updateName(event: any) {
+    this.name = event.target.value;
+  }
+
+  updateage(event: any) {
+    this.age = event.target.value;
+  }
+
+  onConfirm() {
+    let newStudent = new Student();
+    newStudent.rollno = this.rollno;
+    newStudent.name = this.name;
+    newStudent.age = this.age;
+
+    this.todoService.addTodo(newStudent);
+    console.log(newStudent);
   }
 }

@@ -1,6 +1,8 @@
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TodoDataService } from 'src/app/services/todo-data.service';
-import { Todo } from '../../../models/todo.model';
+import { Student } from '../../../models/student.model';
+import { UpdateDialogComponent } from './update-dialog/update-dialog.component';
 
 @Component({
   selector: 'app-cards',
@@ -8,21 +10,18 @@ import { Todo } from '../../../models/todo.model';
   styleUrls: ['./cards.component.css'],
 })
 export class CardsComponent implements OnInit {
-  constructor(private todoDataService:TodoDataService) {}
+  constructor(
+    private todoDataService: TodoDataService,
+    private dialog: MatDialog
+  ) {}
 
-  @Input() todo: Todo;
-  className:string;
-  ngOnInit(): void {
-    this.className=this.todo.completed?"completed":"card";
-  }
+  @Input() student: Student;
 
-  onChange() {
-    this.todoDataService.updateTodo(this.todo);
+  ngOnInit(): void {}
 
-    this.className=this.todo.completed?"completed":"card";
-  }
-
-  onDelete() {
-    this.todoDataService.deleteTodo(this.todo);
+  onClick() {
+    const dialogRef = this.dialog.open(UpdateDialogComponent, {
+      data: this.student,
+    });
   }
 }

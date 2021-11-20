@@ -1,9 +1,5 @@
-<div class={{className}}>
-    <input (change)="onChange()" type="checkbox" name="completed" [value]="todo.completed">
+<div class="card" (click)="onClick()">
     <div class="content">
-        <h3>{{todo.message}}</h3>
+        <h3>{{student.name}}</h3>
     </div>
-    <button mat-button *ngIf="todo.completed" class="deleteButton" (click)="onDelete()">    
-        <mat-icon style="height: 35px; ">delete</mat-icon>
-    </button>
 </div>

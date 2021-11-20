@@ -1,31 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, Observer } from 'rxjs';
-import { Todo } from '../models/todo.model';
+import { Student } from '../models/student.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class TodoDataService {
-  private todoArray: Todo[];
-
+  private studentArray: Student[];
+  private serverEndPoint: string = 'http://localhost:8080/student';
   constructor(private http: HttpClient) {}
 
   private addToListUsingObservable: Function;
   private overWriteListUsingObservable: Function;
 
-  private todoObservable: Observable<Todo[]> = new Observable<Todo[]>(
-    (observer: Observer<Todo[]>) => {
-      observer.next(this.todoArray);
+  private todoObservable: Observable<Student[]> = new Observable<Student[]>(
+    (observer: Observer<Student[]>) => {
+      observer.next(this.studentArray);
 
-      this.addToListUsingObservable = (todo: Todo) => {
-        this.todoArray.push(todo);
-        observer.next(this.todoArray);
+      this.addToListUsingObservable = (student: Student) => {
+        this.studentArray.push(student);
+        observer.next(this.studentArray);
       };
 
-      this.overWriteListUsingObservable = (todoList: Todo[]) => {
-        this.todoArray = todoList;
-        observer.next(this.todoArray);
+      this.overWriteListUsingObservable = (studentList: Student[]) => {
+        this.studentArray = studentList;
+        observer.next(this.studentArray);
       };
 
       return { unsubscribe() {} };
@@ -33,40 +33,41 @@ export class TodoDataService {
   );
 
   public getTodoList(): Observable<Object> {
-    this.http.get('http://localhost:8080/todo').subscribe((resp: Todo[]) => {
+    this.http.get(this.serverEndPoint).subscribe((resp: Student[]) => {
       this.overWriteListUsingObservable(resp);
     });
     return this.todoObservable;
   }
 
-  public addTodo(newTodo: Todo): void {
-    this.http.post('http://localhost:8080/todo', newTodo).subscribe((resp) => {
-      this.addToListUsingObservable(newTodo);
+  public addTodo(newStudent: Student): void {
+    this.http.post(this.serverEndPoint, newStudent).subscribe((resp) => {
+      this.addToListUsingObservable(newStudent);
       console.log(resp);
     });
   }
 
-  public deleteTodo(delTodo: Todo) {
-    this.todoArray = this.todoArray.filter((todo) => todo.id != delTodo.id);
+  public deleteTodo(delStudent: Student) {
+    this.studentArray = this.studentArray.filter(
+      (student: Student) => student.rollno != delStudent.rollno
+    );
     this.http
-      .delete('http://localhost:8080/todo', { body: delTodo })
+      .delete(this.serverEndPoint, { body: delStudent })
       .subscribe((resp) => {
-        this.overWriteListUsingObservable(this.todoArray);
+        this.overWriteListUsingObservable(this.studentArray);
         console.log(resp);
       });
   }
 
-  public updateTodo(toggleTodo: Todo) {
-    this.todoArray.forEach((todo: Todo) => {
-      if (todo.id == toggleTodo.id) {
-        todo.completed = !todo.completed;
+  public updateTodo(updatedStudent: Student) {
+    this.studentArray.forEach((student: Student) => {
+      if (student.rollno == updatedStudent.rollno) {
+        student.name = updatedStudent.name;
+        student.age = updatedStudent.age;
       }
     });
-    this.http
-      .put('http://localhost:8080/todo', toggleTodo)
-      .subscribe((resp) => {
-        this.overWriteListUsingObservable(this.todoArray);
-        console.log(resp);
-      });
+    this.http.put(this.serverEndPoint, updatedStudent).subscribe((resp) => {
+      this.overWriteListUsingObservable(this.studentArray);
+      console.log(resp);
+    });
   }
 }

@@ -14,6 +14,7 @@ import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
+import { UpdateDialogComponent } from './components/todos/cards/update-dialog/update-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,6 +22,7 @@ import { HttpClientModule } from '@angular/common/http';
     TodosComponent,
     AddDialogComponent,
     AddButtonComponent,
+    UpdateDialogComponent,
   ],
   imports: [
     BrowserModule,

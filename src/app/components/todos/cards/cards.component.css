@@ -4,6 +4,7 @@ h3 {
 
 .card {
   background-color: #ffffff;
+  cursor: pointer;
   margin: 1rem 2rem;
   padding: 2rem;
   border-radius: 2rem;
@@ -13,7 +14,7 @@ h3 {
 }
 
 .completed {
-  background-color:rgba(0, 0, 0, 0.2) ;
+  background-color: rgba(0, 0, 0, 0.2);
   margin: 1rem 2rem;
   padding: 2rem;
   border-radius: 2rem;
@@ -35,7 +36,7 @@ input[type="checkbox"] {
   cursor: pointer;
 }
 
-.deleteButton{
+.deleteButton {
   position: absolute;
-  right:5rem
+  right: 5rem;
 }
