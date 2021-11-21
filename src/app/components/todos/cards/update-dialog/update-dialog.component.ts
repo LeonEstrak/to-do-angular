@@ -35,6 +35,7 @@ export class UpdateDialogComponent {
 
   onConfirm() {
     let newStudent = new Student();
+    newStudent.id = this.studentData.id;
     newStudent.rollno = this.rollno;
     newStudent.name = this.name;
     newStudent.age = this.age;

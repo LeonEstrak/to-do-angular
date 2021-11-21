@@ -48,7 +48,7 @@ export class TodoDataService {
 
   public deleteTodo(delStudent: Student) {
     this.studentArray = this.studentArray.filter(
-      (student: Student) => student.rollno != delStudent.rollno
+      (student: Student) => student.id != delStudent.id
     );
     this.http
       .delete(this.serverEndPoint, { body: delStudent })
@@ -60,7 +60,8 @@ export class TodoDataService {
 
   public updateTodo(updatedStudent: Student) {
     this.studentArray.forEach((student: Student) => {
-      if (student.rollno == updatedStudent.rollno) {
+      if (student.id == updatedStudent.id) {
+        student.rollno = updatedStudent.rollno;
         student.name = updatedStudent.name;
         student.age = updatedStudent.age;
       }
